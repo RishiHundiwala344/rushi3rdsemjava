@@ -1,3 +1,5 @@
+/* Rushi Hundiwala= 1BM22CS224*/
+
 import java.util.Scanner;
 
 class Subject {
