@@ -1,0 +1,70 @@
+import java.io.*;
+
+class Book {
+private String name;
+private String author;
+private double price;
+private int numPages;
+
+public Book(String name, String author, double price, int numPages){
+this.name = name;
+this.author = author;
+this.price = price;
+this.numPages = numPages;
+}
+
+public String getName(){
+return name;
+}
+
+public void setName(String name){
+this.name = name;
+}
+
+public String getAuthor(){
+return author;
+}
+
+public void setAuthor(String author){
+this.author = author;
+}
+
+public double getPrice(){
+return price;
+}
+
+public void setPrice(double price){
+this.price = price;
+}
+
+public int getNumPages(){
+return numPages;
+}
+
+public void setNumPages(int numPages){
+this.numPages = numPages;
+}
+
+public String toString() {
+return "Book Details - Nane: " + name + ", Author: " + author + ", Price: $" + price + ", Number of Pages: " + numPages;
+}
+}
+
+public class Main{
+public static void main(String[] args){
+int n=3;
+
+Book[] books = new Book[n];
+
+books[0] = new Book("The Catcher","J.D",15.99,224);
+books[1] = new Book("To Kill","Lee",12.50,336);
+books[2] = new Book("1984","Orwell",9.99,328);
+
+System.out.println("Rushi, 1bm22cs224");
+
+for(int i =0;i<n;i++){
+System.out.println(books[i].toString());
+System.out.println();
+}
+}
+}
