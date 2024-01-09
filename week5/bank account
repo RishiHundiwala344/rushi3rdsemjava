@@ -1,0 +1,88 @@
+NAME: Rushi Hundiwala
+USN:1BM22CS224
+
+
+import java.util.Scanner;
+
+class Account {
+    String customerName;
+    int accountNumber;
+    String accountType;
+    double balance;
+
+    Account(String name, int accNumber, String accType) {
+        customerName = name;
+        accountNumber = accNumber;
+        accountType = accType;
+        balance = 0.0;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    void displayBalance() {
+        System.out.println("Balance for account " + accountNumber + ": $" + balance);
+    }
+}
+
+class CurAcct extends Account {
+    double minBalance;
+    double serviceCharge;
+
+    CurAcct(String name, int accNumber) {
+        super(name, accNumber, "Current");
+        minBalance = 1000.0;  // Example minimum balance for current account
+        serviceCharge = 10.0; // Example service charge for falling below minimum balance
+    }
+
+    void checkMinBalance() {
+        if (balance < minBalance) {
+            balance -= serviceCharge;
+            System.out.println("Service charge imposed. New balance: $" + balance);
+        }
+    }
+}
+
+class SavAcct extends Account {
+    double interestRate;
+
+    SavAcct(String name, int accNumber) {
+        super(name, accNumber, "Savings");
+        interestRate = 0.05; // Example interest rate for savings account
+    }
+
+    void computeInterest() {
+        double interest = balance * interestRate;
+        balance += interest;
+        System.out.println("Interest computed. New balance: $" + balance);
+    }
+
+    void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+            System.out.println("Withdrawal successful. New balance: $" + balance);
+        } else {
+            System.out.println("Insufficient funds for withdrawal.");
+        }
+    }
+}
+
+public class Bank {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Example usage
+        CurAcct currentAccount = new CurAcct("John Doe", 123456);
+        currentAccount.deposit(1500.0);
+        currentAccount.displayBalance();
+        currentAccount.checkMinBalance();
+
+        SavAcct savingsAccount = new SavAcct("Jane Smith", 789012);
+        savingsAccount.deposit(2000.0);
+        savingsAccount.displayBalance();
+        savingsAccount.computeInterest();
+
+        // You can add more functionality or create additional accounts as needed
+    }
+}
