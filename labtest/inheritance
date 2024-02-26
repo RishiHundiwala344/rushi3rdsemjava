@@ -1,0 +1,74 @@
+class Book {
+    private String name;
+    private String author;
+    private double price;
+    private int num_pages;
+
+    public Book(String name, String author, double price, int num_pages) {
+        this.name = name;
+        this.author = author;
+        this.price = price;
+        this.num_pages = num_pages;
+    }
+
+    // Getters
+    public String getName() {
+        return name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getNumPages() {
+        return num_pages;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setNumPages(int num_pages) {
+        this.num_pages = num_pages;
+    }
+
+    // toString method
+    @Override
+    public String toString() {
+        return "Book Details: \n" +
+                "Name: " + name + "\n" +
+                "Author: " + author + "\n" +
+                "Price: $" + price + "\n" +
+                "Number of Pages: " + num_pages + "\n";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create an array to store multiple Book objects
+        Book[] books = new Book[3];
+
+        // Initialize book objects
+        books[0] = new Book("The Great Gatsby", "F. Scott Fitzgerald", 10.99, 180);
+        books[1] = new Book("To Kill a Mockingbird", "Harper Lee", 12.50, 281);
+        books[2] = new Book("1984", "George Orwell", 9.99, 328);
+
+        // Display details of all books
+        for (Book book : books) {
+            System.out.println(book.toString());
+        }
+    }
+}
