@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+// Custom exception class
+class WrongAge extends Exception {
+    public WrongAge(String message) {
+        super(message);
+    }
+}
+
+// Base class Father
+class Father {
+    protected int fatherAge;
+
+    // Constructor for Father class
+    public Father() throws WrongAge {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter father's age: ");
+        fatherAge = s.nextInt();
+
+        if (fatherAge < 0) {
+            throw new WrongAge("Age cannot be negative");
+        }
+    }
+
+    // Method to display father's age
+    public void display() {
+        System.out.println("Father's age: " + fatherAge);
+    }
+}
+
+// Derived class Son
+class Son extends Father {
+    private int sonAge;
+
+    // Constructor for Son class
+    public Son() throws WrongAge {
+        super(); // Call to base class constructor
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter son's age: ");
+        sonAge = s.nextInt();
+
+        if (sonAge >= fatherAge) {
+            throw new WrongAge("Son's age cannot be greater than father's age");
+        } else if (sonAge < 0) {
+            throw new WrongAge("Age cannot be negative");
+        }
+    }
+
+    // Method to display son's age
+    public void display() {
+        super.display(); // Call to base class method to display father's age
+        System.out.println("Son's age: " + sonAge);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Son son = new Son();
+            son.display();
+        } catch (WrongAge e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
